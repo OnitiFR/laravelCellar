@@ -1,0 +1,19 @@
+{
+    "name": "oniti/cellar",
+    "description": "Gestion de l'upload et du téléchargement de fichiers sur Cellar, technologie de Clever Cloud",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Francois BOUYER",
+            "email": "francois@oniti.fr"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php-laravel": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Oniti\\Cellar\\": "src"
+        }
+    }
+}
