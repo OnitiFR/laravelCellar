@@ -26,3 +26,12 @@ The last required step is to publish views and assets in your application with :
 ```
     php artisan vendor:publish
 ```
+
+### Env Requiered ###
+
+```
+CELLAR_ADDON_BUCKET= <You'r Bucket>
+CELLAR_ADDON_HOST= <Host>
+CELLAR_ADDON_KEY_ID= <You'r Key>
+CELLAR_ADDON_KEY_SECRET=<You'r Secret>
+```
