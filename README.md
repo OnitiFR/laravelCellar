@@ -3,18 +3,10 @@
  
 ### Installation ###
  
-Add Cellar to your composer.json file to require Scafold :
 ```
-    require : {
-        "oniti/cellar": "dev-master"
-    }
+    composer require oniti/cellar
 ```
- 
-Update Composer :
-```
-    composer update
-```
- 
+
 The next required step is to add the service provider to config/app.php :
 ```
     Oniti\Cellar\CellarServiceProvider::class,
