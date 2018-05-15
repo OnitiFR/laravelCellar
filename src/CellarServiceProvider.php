@@ -1,4 +1,6 @@
-<?php namespace Oniti\Cellar;
+<?php 
+
+namespace Oniti\Cellar;
 
 use Illuminate\Support\ServiceProvider;
 use App;
@@ -17,7 +19,7 @@ class CellarServiceProvider extends ServiceProvider{
     public function boot(){
         $loader = AliasLoader::getInstance();
         $loader->alias('AWS', \Aws\Laravel\AwsFacade::class);
-        $loader->alias('CellarS3', \Oniti\Cellar\Facades\CellarS3::class);
+        $loader->alias('CellarS3', \Oniti\Cellar\CellarS3Facade::class);
         $this->publishes([
             __DIR__.'/config' => base_path('config')
         ]);

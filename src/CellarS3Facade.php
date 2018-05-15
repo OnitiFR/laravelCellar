@@ -1,7 +1,7 @@
 <?php
-namespace Oniti\Cellar\Facades;
+namespace Oniti\Cellar;
 
-class CellarS3 extends \Illuminate\Support\Facades\Facade
+class CellarS3Facade extends \Illuminate\Support\Facades\Facade
 {
   protected static function getFacadeAccessor()
   {
