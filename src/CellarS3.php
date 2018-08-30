@@ -31,18 +31,21 @@ class CellarS3
     }
   }
   /**
-  * Met en ligne un fichier sur cellar S3
-  * @param  [type] $streamFile [description]
-  * @param  [type] $key        [description]
-  * @return [type]             [description]
-  */
-  public function upload($streamFile, $key,$mime,$cacheControle = null){
+   * Met en ligne un fichier sur cellar S3
+   * @param  [type] $streamFile    [description]
+   * @param  [type] $key           [description]
+   * @param  [type] $mime          [description]
+   * @param  [type] $cacheControle [description]
+   * @param  string $acl           [description]
+   * @return [type]                [description]
+   */
+  public function upload($streamFile, $key,$mime,$cacheControle = null, $acl = 'public-read'){
     $this->s3Client->putObject([
         'Bucket'        => $this->bucket,
         'Key'           => $key,
         'Body'          => $streamFile,
         'ContentType'   => $mime,
-        'ACL'           => 'public-read',
+        'ACL'           => $acl,
         'CacheControl'  => $cacheControle ? 'max-age='.$cacheControle : 'no-cache'
     ]);
   }
@@ -52,9 +55,10 @@ class CellarS3
    * @param  [type] $key           [description]
    * @param  [type] $mime          [description]
    * @param  [type] $cacheControle [description]
+   * @param  string $acl           [description]
    * @return [type]                [description]
    */
-  public function multipartUpload($path, $key,$mime,$cacheControle = null){
+  public function multipartUpload($path, $key,$mime,$cacheControle = null, $acl = 'public-read'){
     $uploader = UploadBuilder::newInstance()
     ->setClient($this->s3Client)
     ->setSource($path)
@@ -63,7 +67,7 @@ class CellarS3
     ->setConcurrency(5)
     ->setMinPartSize(2 * 1024 * 1024)
     ->setOption('ContentType',$mime)
-    ->setOption('ACL','public-read')
+    ->setOption('ACL',$acl)
     ->setOption('CacheControl',$cacheControle ? 'max-age='.$cacheControle : 'no-cache')
     ->build()
     ->upload();
