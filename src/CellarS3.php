@@ -131,7 +131,7 @@ class CellarS3
   }
 
   public function buildUrl($path){
-    return 'http://'.getenv('CELLAR_ADDON_BUCKET').'.'.getenv('CELLAR_ADDON_HOST').'/'.$path;
+    return 'https://'.getenv('CELLAR_ADDON_BUCKET').'.'.getenv('CELLAR_ADDON_HOST').'/'.$path;
   }
 
   /**
