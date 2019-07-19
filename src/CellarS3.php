@@ -93,7 +93,7 @@ class CellarS3
   * @param  [type] $key [description]
   * @return [type]      [description]
   */
-  public function get($key,$saveLocal){
+  public function get($key,$saveLocal,$path_local_save = null){
     $options = [
       'Key' => $key,
       'Bucket' => $this->bucket
@@ -102,7 +102,7 @@ class CellarS3
     if($saveLocal){
       $filename = explode('/', $key)[1];
 
-      $dir = dirname(dirname(dirname(__DIR__))).'/tmp';
+      $dir = $path_local_save ?? dirname(dirname(dirname(__DIR__))).'/tmp';
       if (!file_exists($dir)) {
         mkdir($dir, 0777, true);
       }
